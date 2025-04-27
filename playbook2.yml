@@ -1,0 +1,13 @@
+---
+- name: Create a directory and copy a file into it
+  hosts: all
+  tasks:
+    - name: Create a directory in the /tmp/folder
+      file:
+        name: /tmp/dirl
+        state: directory
+    - name: Copy some file into the above directory
+      copy:
+        src: /home/ubuntu/tomcat-users.xml
+        dest: /tmp/dirl
+...

@@ -1,0 +1,20 @@
+---
+- name: Install git and clone a remote git repo from github
+  hosts: all
+  tasks:
+    - name: Install git
+      apt:
+        name: git
+        state: present
+        update_cache: yes
+    - name: Clone a remote repo into a new folder
+      git:
+        repo: https://github.com/KolliCharan/gitproject1.git
+        dest: /tmp/mygit
+    - name: Change permissions,ownership and group owner ship of the folder
+      file:
+        name: /tmp/mygit
+        mode: 750
+        owner: vani
+        group: Anu
+...
