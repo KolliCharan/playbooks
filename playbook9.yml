@@ -1,0 +1,14 @@
+---
+- name: Create users and copy files in users home dir
+  hosts: all
+  tasks:
+    - name: Create users
+      user:
+        name: "{{a}}"
+        password: "{{b}}"
+        home: "{{c}}"
+    - name: Copy files into users home dir
+      copy:
+        src: "{{d}}"
+        dest: "{{e}}"
+...
