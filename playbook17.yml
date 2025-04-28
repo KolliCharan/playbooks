@@ -1,0 +1,20 @@
+---
+- name: Implementing handlers
+  hosts: all
+  tasks:
+    - name: Install apache2
+      apt:
+        name: apache2
+        state: present
+        update_cache: yes
+    - name: Edit the index.html file
+      copy:
+        content: "Welcome to IntelliQIT"
+        dest: /var/www/html/index.html
+      notify: Restart apache2
+  handlers:
+    - name: Restart apache2
+      service:
+        name: apache2
+        state: restarted
+
